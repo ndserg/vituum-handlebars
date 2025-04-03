@@ -1,7 +1,7 @@
-import initWebpSupport from "./webp-support.js";
-import initMenuPopup from "./menu.js";
+import initWebpSupport from './webp-support.js';
+import initMenuPopup from './menu.js';
 
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener('DOMContentLoaded', () => {
   initWebpSupport();
   initMenuPopup();
 });

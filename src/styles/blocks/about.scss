@@ -36,13 +36,13 @@
 
 .no-webp .about__subscribe {
   &::before {
-    background-image: url('img/canon.jpg');
+    background-image: url('/img/canon.jpg');
   }
 }
 
 .webp .about__subscribe {
   &::before {
-    background-image: url('img/canon.webp');
+    background-image: url('/img/canon.webp');
   }
 }
 

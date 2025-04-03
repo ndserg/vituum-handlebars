@@ -31,15 +31,18 @@ export default defineConfig(({ mode }) => {
       },
     },
     build: {
+      modulePreload: {
+        polyfill: false,
+      },
       rollupOptions: {
         input: getTemplateFiles('./src/pages'),
         output: {
-          assetFileNames: ({ name }) => {
-            if (/\.(gif|jpe?g|png|svg)$/.test(name ?? '')) {
+          assetFileNames: ({ names }) => {
+            if (/\.(gif|jpe?g|png|svg)$/.test(names ?? '')) {
               return 'img/[name]-[hash][extname]';
             }
 
-            if (/\.css$/.test(name ?? '')) {
+            if (/\.css$/.test(names ?? '')) {
               const cssFileName = mode === 'development' ? 'css/[name]-[hash][extname]' : 'css/[name]-[hash].min[extname]';
               return cssFileName;
             }
@@ -47,6 +50,7 @@ export default defineConfig(({ mode }) => {
             return 'assets/[name]-[hash][extname]';
           },
           sourcemapFileNames: 'sourcemaps/js/[name].[hash].js.map',
+          chunkFileNames: mode === 'development' ? 'js/[name]-[hash].js' : 'js/[name]-[hash].min.js',
         },
       },
       sourcemap: mode === 'development' ? true : false,

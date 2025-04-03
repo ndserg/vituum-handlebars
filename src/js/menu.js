@@ -8,8 +8,8 @@ let menuButton = null;
 let menu = null;
 
 const mediaQueryList = window.matchMedia(`(min-width: ${VEWPORTS.desktop}px)`);
-const bodyLockedClass = "locked";
-const menuOpenClass = "header--show-menu";
+const bodyLockedClass = 'locked';
+const menuOpenClass = 'header--show-menu';
 
 let isSettedListener = false;
 
@@ -24,7 +24,7 @@ const setActiveClasses = () => {
 };
 
 const mouseUpHandler = (evt) => {
-  if (evt.target.closest("a")) {
+  if (evt.target.closest('a')) {
     evt.preventDefault();
 
     removeActiveClasses();
@@ -42,16 +42,16 @@ const menuButtonClickHandler = (evt) => {
 };
 
 const removeMainNavListener = () => {
-  menu.removeEventListener("mouseup", mouseUpHandler);
+  menu.removeEventListener('mouseup', mouseUpHandler);
 };
 
 const addMainNavListener = () => {
-  menu.addEventListener("mouseup", mouseUpHandler);
+  menu.addEventListener('mouseup', mouseUpHandler);
 };
 
 const addmenuButtonListener = () => {
   if (!isSettedListener) {
-    menuButton.addEventListener("click", menuButtonClickHandler);
+    menuButton.addEventListener('click', menuButtonClickHandler);
     addMainNavListener();
     isSettedListener = true;
   }
@@ -59,7 +59,7 @@ const addmenuButtonListener = () => {
 
 const removemenuButtonListener = () => {
   if (isSettedListener) {
-    menuButton.removeEventListener("click", menuButtonClickHandler);
+    menuButton.removeEventListener('click', menuButtonClickHandler);
     removeMainNavListener();
 
     removeActiveClasses();
@@ -76,16 +76,16 @@ const screenSizeChangeHandler = (mql) => {
 };
 
 const initMenuPopup = () => {
-  body = document.querySelector("body");
-  header = body.querySelector(".header");
-  menu = header.querySelector(".header__nav");
-  menuButton = header.querySelector(".header__nav-btn");
+  body = document.querySelector('body');
+  header = body.querySelector('.header');
+  menu = header.querySelector('.header__nav');
+  menuButton = header.querySelector('.header__nav-btn');
 
   addmenuButtonListener();
 
   screenSizeChangeHandler(mediaQueryList);
 
-  mediaQueryList.addEventListener("change", screenSizeChangeHandler);
+  mediaQueryList.addEventListener('change', screenSizeChangeHandler);
 };
 
 export default initMenuPopup;
